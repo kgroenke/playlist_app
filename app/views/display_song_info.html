@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+  </head>
+  <body>
+    <a href='/songs'>Dashboard</a>
+    <a href='/logout'>Log Out</a>
+    {% if song_info %}
+    <p>Others who added {{ song_info[0]['title'] }}</p>
+    {% else %}
+    <p>No users have added this song</p>
+    {% endif %}
+    <table border="1">
+      <tr>
+        <th>Name</th>
+        <th>Times Added</th>
+      </tr>
+      {% for user in song_info %}
+      <tr>
+        <td><a href='/users/{{ user['user_id'] }}'>{{ user['first_name'] }} {{ user['last_name'] }}<a></td>
+        <td>{{ count_arr[song_info[0]['playlist_id']] }}</td>
+      <tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
